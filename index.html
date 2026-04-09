@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Fake News Detector</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<div class="container animated-container">
+
+<h1 class="glow-text">🧠 Fake News Detector</h1>
+<p class="subtitle">AI powered smart analysis</p>
+
+<form action="/predict" method="post" class="animated-form">
+<textarea id="box" name="news" placeholder="Paste news here..." required></textarea>
+<br>
+<button class="glow-button">Analyze</button>
+</form>
+
+<h3>Try Example</h3>
+
+<select onchange="setText(this.value)">
+<option value="">Select Example</option>
+<option value="Click here to win free iPhone now">Fake</option>
+<option value="Government announced new policy in India">Real</option>
+<option value="Hello how are you">Random</option>
+</select>
+
+<div class="btns">
+<button onclick="setText('Click here free money')" class="glow-button">Fake</button>
+<button onclick="setText('Government launches policy')" class="glow-button">Real</button>
+<button onclick="setText('Random text hello')" class="glow-button">Random</button>
+</div>
+
+</div>
+
+<script>
+function setText(v){
+document.getElementById("box").value=v;
+}
+</script>
+
+</body>
+</html>
