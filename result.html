@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Result</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<div class="container animated-container">
+
+<h1 class="glow-text">📊 Analysis Result</h1>
+
+<div class="card {{ prediction.class }} glow-card">
+
+<p><b>{{ news }}</b></p>
+<h2>{{ prediction.label }}</h2>
+<p>{{ prediction.message }}</p>
+
+<br>
+
+<h3>Confidence: {{ prediction.confidence }}%</h3>
+
+<div class="circle glow-circle">
+    <div class="inside">{{ prediction.confidence }}%</div>
+</div>
+
+<br>
+
+<h3>AI Score</h3>
+<p><b>Fake:</b> {{ prediction.fake_score }}%</p>
+<div class="bar fake-bar" style="width: {{ prediction.fake_score }}%"></div>
+
+<p><b>Real:</b> {{ prediction.real_score }}%</p>
+<div class="bar real-bar" style="width: {{ prediction.real_score }}%"></div>
+
+<br>
+
+<h3>Why this result?</h3>
+<ul>
+{% for r in prediction.reasons %}
+<li>{{ r }}</li>
+{% endfor %}
+</ul>
+
+<br>
+<a href="/" class="glow-button">🔙 Go Back</a>
+
+</div>
+
+</body>
+</html>
